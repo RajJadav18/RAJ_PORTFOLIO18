@@ -38,8 +38,7 @@ export default function Contact() {
     if (Object.keys(errs).length > 0) { setErrors(errs); return; }
 
     setLoading(true);
-    const API = process.env.REACT_APP_API_URL || '';
-    try {
+    const API = process.env.REACT_APP_API_URL || 'https://raj-portfolio18.onrender.com'; try {
       await axios.post(`${API}/api/contact`, form);
       setSent(true);
       setForm({ name: '', email: '', subject: '', message: '' });

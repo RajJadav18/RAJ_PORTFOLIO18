@@ -51,7 +51,7 @@ export default function Projects() {
   const [selected, setSelected] = useState(null);
 
   useEffect(() => {
-    const API = process.env.REACT_APP_API_URL || '';
+    const API = process.env.REACT_APP_API_URL || 'https://raj-portfolio18.onrender.com';
     axios.get(`${API}/api/projects`)
       .then(r => { setProjects(r.data.data || fallbackProjects); setLoading(false); })
       .catch(() => { setProjects(fallbackProjects); setLoading(false); });

@@ -24,7 +24,7 @@ export default function Home() {
   const heroRef = useRef(null);
 
   useEffect(() => {
-    const API = process.env.REACT_APP_API_URL || '';
+    const API = process.env.REACT_APP_API_URL || 'https://raj-portfolio18.onrender.com';
     axios.get(`${API}/api/projects`).then(r => setProjects(r.data.data?.slice(0, 3) || [])).catch(() => {
       setProjects([
         { _id: '1', title: 'Gesture-Based Hand Control Game', description: 'AI-powered game via hand gestures using computer vision & ML.', tech: ['Python', 'OpenCV', 'MediaPipe'], category: 'ai', featured: true },
