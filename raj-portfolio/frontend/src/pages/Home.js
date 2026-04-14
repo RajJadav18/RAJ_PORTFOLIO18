@@ -24,7 +24,7 @@ export default function Home() {
   const heroRef = useRef(null);
 
   useEffect(() => {
-    const API = process.env.REACT_APP_API_URL || 'https://raj-portfolio18.onrender.com';
+    const API = process.env.REACT_APP_API_URL || '';
     axios.get(`${API}/api/projects`).then(r => setProjects(r.data.data?.slice(0, 3) || [])).catch(() => {
       setProjects([
         { _id: '1', title: 'Gesture-Based Hand Control Game', description: 'AI-powered game via hand gestures using computer vision & ML.', tech: ['Python', 'OpenCV', 'MediaPipe'], category: 'ai', featured: true },
@@ -78,7 +78,7 @@ export default function Home() {
               Rajkot, Gujarat, India
             </div>
 
-            <h1 style={{ fontSize: 'clamp(48px, 8vw, 90px)', fontWeight: 800, lineHeight: 1.0, letterSpacing: '-0.04em', marginBottom: 24, color: 'var(--text-primary)' }}>
+            <h1 style={{ fontSize: 'clamp(44px, 7vw, 86px)', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.02em', marginBottom: 24, color: 'var(--text-primary)', overflow: 'visible', paddingBottom: 4 }}>
               Raj Jadav<span style={{ color: 'var(--accent-gold)' }}>.</span>
             </h1>
 
