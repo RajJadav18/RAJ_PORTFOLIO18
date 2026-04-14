@@ -25,19 +25,49 @@ export default function Navbar() {
     <>
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-        padding: scrolled ? '16px 0' : '24px 0',
-        background: scrolled ? 'rgba(6,6,13,0.9)' : 'transparent',
+        padding: scrolled ? '12px 0' : '20px 0',
+        background: scrolled ? 'rgba(6,6,13,0.95)' : 'transparent',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
         borderBottom: scrolled ? '1px solid rgba(255,255,255,0.05)' : 'none',
         transition: 'all 0.4s cubic-bezier(0.4,0,0.2,1)',
       }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          {/* Logo */}
-          <Link to="/" style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <span style={{ fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 800, letterSpacing: '-0.03em', color: 'var(--text-primary)' }}>
-              Raj<span style={{ color: 'var(--accent-gold)' }}>.</span>Jadav
-            </span>
-            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.2em', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Dev & Designer</span>
+
+          {/* LOGO */}
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 12, textDecoration: 'none' }}>
+            <div style={{
+              width: 42, height: 42,
+              background: 'linear-gradient(135deg, #c9a84c 0%, #a07830 100%)',
+              borderRadius: 10,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontFamily: "'Montserrat', sans-serif",
+              fontWeight: 900,
+              fontSize: 15,
+              color: '#06060d',
+              letterSpacing: '0.02em',
+              flexShrink: 0,
+              boxShadow: '0 4px 20px rgba(201,168,76,0.35)',
+            }}>RJ</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+              <span style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 17,
+                fontWeight: 800,
+                letterSpacing: '0.08em',
+                color: '#f0ede8',
+                lineHeight: 1,
+              }}>
+                RAJ <span style={{ color: '#c9a84c' }}>JADAV</span>
+              </span>
+              <span style={{
+                fontFamily: "'Space Mono', monospace",
+                fontSize: 8,
+                letterSpacing: '0.22em',
+                color: '#4a4760',
+                textTransform: 'uppercase',
+                lineHeight: 1,
+              }}>Dev &amp; Designer</span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
@@ -48,7 +78,7 @@ export default function Navbar() {
                 fontSize: 14,
                 fontWeight: 500,
                 letterSpacing: '0.02em',
-                color: location.pathname === link.path ? 'var(--accent-gold)' : 'var(--text-secondary)',
+                color: location.pathname === link.path ? '#c9a84c' : '#8a8799',
                 transition: 'color 0.2s',
                 position: 'relative',
               }}>
@@ -56,8 +86,7 @@ export default function Navbar() {
                 {location.pathname === link.path && (
                   <span style={{
                     position: 'absolute', bottom: -4, left: 0, right: 0,
-                    height: 1, background: 'var(--accent-gold)',
-                    borderRadius: 1,
+                    height: 1, background: '#c9a84c', borderRadius: 1,
                   }} />
                 )}
               </Link>
@@ -72,7 +101,7 @@ export default function Navbar() {
             onClick={() => setMenuOpen(!menuOpen)}
             style={{
               display: 'none', flexDirection: 'column', gap: 5,
-              background: 'none', border: 'none', cursor: 'none', padding: 4,
+              background: 'none', border: 'none', cursor: 'pointer', padding: 4,
             }}
             className="hamburger"
             aria-label="Toggle menu"
@@ -80,10 +109,10 @@ export default function Navbar() {
             {[0, 1, 2].map(i => (
               <span key={i} style={{
                 display: 'block', width: 24, height: 1,
-                background: 'var(--text-primary)',
+                background: '#f0ede8',
                 transition: 'all 0.3s',
                 transform: menuOpen && i === 0 ? 'rotate(45deg) translate(4px, 4px)' :
-                           menuOpen && i === 2 ? 'rotate(-45deg) translate(4px, -4px)' : 'none',
+                  menuOpen && i === 2 ? 'rotate(-45deg) translate(4px, -4px)' : 'none',
                 opacity: menuOpen && i === 1 ? 0 : 1,
               }} />
             ))}
@@ -94,20 +123,20 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <div style={{
         position: 'fixed', inset: 0, zIndex: 999,
-        background: 'rgba(6,6,13,0.97)',
+        background: 'rgba(6,6,13,0.98)',
         backdropFilter: 'blur(20px)',
         display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
         gap: 40,
         transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
         transition: 'transform 0.5s cubic-bezier(0.4,0,0.2,1)',
-      }} className="mobile-menu">
+      }}>
         {navLinks.map(link => (
           <Link key={link.path} to={link.path} style={{
-            fontFamily: 'var(--font-display)',
+            fontFamily: "'Montserrat', sans-serif",
             fontSize: 36,
             fontWeight: 800,
-            color: location.pathname === link.path ? 'var(--accent-gold)' : 'var(--text-primary)',
-            letterSpacing: '-0.02em',
+            letterSpacing: '0.05em',
+            color: location.pathname === link.path ? '#c9a84c' : '#f0ede8',
           }}>
             {link.label}
           </Link>
