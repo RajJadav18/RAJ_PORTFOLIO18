@@ -19,14 +19,28 @@ function App() {
     const follower = followerRef.current;
     if (!cursor || !follower) return;
 
-    let mouseX = 0, mouseY = 0;
-    let followerX = 0, followerY = 0;
+    let mouseX = -999, mouseY = -999;
+    let followerX = -999, followerY = -999;
+    let appeared = false;
+
+    // Start both off-screen
+    cursor.style.left = '-999px';
+    cursor.style.top = '-999px';
+    cursor.style.opacity = '0';
+    follower.style.left = '-999px';
+    follower.style.top = '-999px';
+    follower.style.opacity = '0';
 
     const onMouseMove = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       cursor.style.left = mouseX + 'px';
       cursor.style.top = mouseY + 'px';
+      if (!appeared) {
+        appeared = true;
+        cursor.style.opacity = '1';
+        follower.style.opacity = '1';
+      }
     };
 
     const animate = () => {
