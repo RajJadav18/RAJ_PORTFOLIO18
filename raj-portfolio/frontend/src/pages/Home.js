@@ -78,7 +78,7 @@ export default function Home() {
               Rajkot, Gujarat, India
             </div>
 
-            <h1 style={{ fontSize: 'clamp(44px, 7vw, 86px)', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.02em', marginBottom: 24, color: 'var(--text-primary)', overflow: 'visible', paddingBottom: 4 }}>
+            <h1 style={{ fontSize: 'clamp(44px, 7vw, 86px)', fontWeight: 800, lineHeight: 1.15, letterSpacing: '0.01em', marginBottom: 24, color: 'var(--text-primary)', overflow: 'visible', paddingBottom: 8, fontFamily: "'Montserrat', sans-serif" }}>
               Raj Jadav<span style={{ color: 'var(--accent-gold)' }}>.</span>
             </h1>
 
