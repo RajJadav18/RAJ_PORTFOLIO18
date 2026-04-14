@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,66 +11,11 @@ import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 
 function App() {
-  const cursorRef = useRef(null);
-  const followerRef = useRef(null);
-
-  useEffect(() => {
-    const cursor = cursorRef.current;
-    const follower = followerRef.current;
-    if (!cursor || !follower) return;
-
-    let mouseX = -999, mouseY = -999;
-    let followerX = -999, followerY = -999;
-    let appeared = false;
-
-    // Start both off-screen
-    cursor.style.left = '-999px';
-    cursor.style.top = '-999px';
-    cursor.style.opacity = '0';
-    follower.style.left = '-999px';
-    follower.style.top = '-999px';
-    follower.style.opacity = '0';
-
-    const onMouseMove = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursor.style.left = mouseX + 'px';
-      cursor.style.top = mouseY + 'px';
-      if (!appeared) {
-        appeared = true;
-        cursor.style.opacity = '1';
-        follower.style.opacity = '1';
-      }
-    };
-
-    const animate = () => {
-      followerX += (mouseX - followerX) * 0.12;
-      followerY += (mouseY - followerY) * 0.12;
-      follower.style.left = followerX + 'px';
-      follower.style.top = followerY + 'px';
-      requestAnimationFrame(animate);
-    };
-
-    const onHoverIn = () => { cursor.classList.add('hovering'); follower.classList.add('hovering'); };
-    const onHoverOut = () => { cursor.classList.remove('hovering'); follower.classList.remove('hovering'); };
-
-    document.addEventListener('mousemove', onMouseMove);
-    document.querySelectorAll('a, button, [role="button"]').forEach(el => {
-      el.addEventListener('mouseenter', onHoverIn);
-      el.addEventListener('mouseleave', onHoverOut);
-    });
-
-    animate();
-    return () => document.removeEventListener('mousemove', onMouseMove);
-  }, []);
-
   return (
     <Router>
       <div className="bg-grid" />
       <div className="orb orb-1" />
       <div className="orb orb-2" />
-      <div ref={cursorRef} className="cursor" />
-      <div ref={followerRef} className="cursor-follower" />
       <Navbar />
       <main style={{ position: 'relative', zIndex: 1 }}>
         <Routes>
